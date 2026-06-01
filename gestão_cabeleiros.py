@@ -2,10 +2,10 @@ print('BEM VINDO, AO SISTEMA DE GESTÃO DE CABELEIREIROS !!!')
 
 clientes = []
 
-pergunta = input('Você deseja gerenciar[s/n]:')
+resposta = ''
 
 
-while pergunta == 's' or pergunta == 'S':
+while resposta != '0':
 
     print('''
         [1]Gerenciar clientes
@@ -17,9 +17,9 @@ while pergunta == 's' or pergunta == 'S':
     ''')
 
     #MODULO DE CLIENTES
-    opcao = int(input('escolha uma das opções:'))
+    resposta = int(input('escolha uma das opções:'))
    
-    if opcao == 1:
+    if resposta == 1:
         print('''
              ### MODULO DE CLIENTES ###
              
@@ -32,9 +32,9 @@ while pergunta == 's' or pergunta == 'S':
             ############################
         ''')
 
-        opcao = int(input('escolha uma das opções:'))
+        resposta = int(input('escolha uma das opções:'))
 
-        if opcao == 1:
+        if resposta == 1:
             nome_cliente = input('digite o nome do cliente:')
             cpf_cliente = input('didte o cpf do cliente:')
             celular_cliente = input('digite o numero do celular do cliente:')
@@ -42,23 +42,23 @@ while pergunta == 's' or pergunta == 'S':
 
             print('Cadastrado com sucesso!!!') #ta mentindo sim, pelo menos por enquanto
         
-        elif opcao == 2:
+        elif resposta == 2:
             print('cliente removido com sucesso!!!')
 
-        elif opcao == 3:
+        elif resposta == 3:
             print('Edição do cliente, realiazada com sucesso!!!')
         
-        elif opcao == 4:
+        elif resposta == 4:
             print('Pesquisa realizada com sucesso!!!')
 
-        elif opcao == 5:
+        elif resposta == 5:
             print('Lista dos clientes!!!')
         
         else:
             print('Nenhuma das opções!!!')
 
     #MODULO DE SERVIÇOS
-    elif opcao == 2:
+    elif resposta == 2:
         print('''
              ### MODULO DE SERVIÇOS ###
              
@@ -71,23 +71,23 @@ while pergunta == 's' or pergunta == 'S':
             ############################
         ''')
 
-        opcao = int(input('escolha uma das opções:'))
+        resposta = int(input('escolha uma das opções:'))
 
-        if opcao == 1:
+        if resposta == 1:
             print('Serviço cadastrado com sucesso!!!')
-        elif opcao == 2:
+        elif resposta == 2:
             print('Serviço removido com sucesso!!!')
-        elif opcao == 3:
+        elif resposta == 3:
             print('Edição do serviço realizada com sucesso!!!')
-        elif opcao == 4:
+        elif resposta == 4:
             print('Pesquisa de serviço realizada com sucesso!!!')
-        elif opcao == 5:
+        elif resposta == 5:
             print('Lista dos serviços!!!')
         else:
             print('Nenhuma das opções!!!')
 
     #MODULO DE AGENDAMENTOS
-    elif opcao == 3:
+    elif resposta == 3:
         print('''
              ### MODULO DE AGENDAMENTOS ###
              
@@ -100,23 +100,23 @@ while pergunta == 's' or pergunta == 'S':
             ############################
         ''')
 
-        opcao = int(input('escolha uma das opções:'))
+        resposta = int(input('escolha uma das opções:'))
 
-        if opcao == 1:
+        if resposta == 1:
             print('Agendamento realizado com sucesso!!!')
-        elif opcao == 2:
+        elif resposta == 2:
             print('Agendamento cancelado com sucesso!!!')
-        elif opcao == 3:
+        elif resposta == 3:
             print('Reagendamento realizado com sucesso!!!')
-        elif opcao == 4:
+        elif resposta == 4:
             print('Pesquisa de agendamento realizada com sucesso!!!')
-        elif opcao == 5:
+        elif resposta == 5:
             print('Lista dos agendamentos!!!')
         else:
             print('Nenhuma das opções!!!')
     
     #MODULO DE RELATÓRIOS
-    elif opcao == 4:
+    elif resposta == 4:
         print('''
              ### MODULO DE RELATÓRIOS ###
              
@@ -127,37 +127,38 @@ while pergunta == 's' or pergunta == 'S':
             ############################
         ''')
 
-        opcao = int(input('escolha uma das opções:'))
+        resposta = int(input('escolha uma das opções:'))
 
-        if opcao == 1:
+        if resposta == 1:
             print('Gerando relatório de faturamento!!!')
-        elif opcao == 2:
+        elif resposta == 2:
             print('Gerando relatório de atendimentos por cliente!!!')
-        elif opcao == 3:
+        elif resposta == 3:
             print('Gerando relatório de serviços mais procurados!!!')
         else:
             print('Nenhuma das opções!!!')
     
     #SOBRE O SISTEMA
-    elif opcao == 5:
+    elif resposta == 5:
         print('''
              ### SOBRE O SISTEMA ###
              
              Sistema de Gestão de Cabeleireiros
              Desenvolvido para controle de clientes, serviços e agendamentos.
+             Desenvolvedor: Ruan Allyson de Araújo Felix
              
             ############################
         ''')
 
     #SAIR
-    elif opcao == 0:
+    elif resposta == 0:
         print('Saindo do sistema... Até logo!')
         break
     
     else:
         print('Nenhuma das opções!!!')
     
-    pergunta = input('Você deseja gerenciar[s/n]:')
+   
 
    
 #sistema de gestão para cabeleireiros
