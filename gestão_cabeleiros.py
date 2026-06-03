@@ -1,11 +1,16 @@
 print('BEM VINDO, AO SISTEMA DE GESTÃO DE CABELEIREIROS !!!')
 
-clientes = []
+clientes = {} 
+
+servicos = {}
+
+agendamentos = {}
+
 
 resposta = ''
 
 
-while resposta != '0':
+while resposta != 0:
 
     print('''
         [1]Gerenciar clientes
@@ -40,7 +45,13 @@ while resposta != '0':
             celular_cliente = input('digite o numero do celular do cliente:')
             email_cliente = input('digite o email do cliente:')
 
-            print('Cadastrado com sucesso!!!') #ta mentindo sim, pelo menos por enquanto
+            clientes[cpf_cliente] = [nome_cliente, email_cliente, cpf_cliente] 
+
+            print('''
+                ###############################
+                ## Cadastrado com sucesso!!! ##
+                ###############################
+                  ''') 
         
         elif resposta == 2:
             print('cliente removido com sucesso!!!')
@@ -52,7 +63,12 @@ while resposta != '0':
             print('Pesquisa realizada com sucesso!!!')
 
         elif resposta == 5:
-            print('Lista dos clientes!!!')
+            print('''
+                ##########################
+                ## Lista de Clientes!!! ##
+                ##########################
+                  ''') 
+            print(clientes)
         
         else:
             print('Nenhuma das opções!!!')
