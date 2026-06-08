@@ -168,7 +168,7 @@ while resposta != '0':
             
             print('''
 #######################################
-## Serviço Cadastrado com sucesso!!! ##
+## Serviço Cadastrado com sucesso!!! ##\
 #######################################
                   ''') 
 
@@ -273,7 +273,7 @@ while resposta != '0':
 
         resposta = input('escolha uma das opções:')
 
-        # 1. CADASTRAR AGENDAMENTO
+        
         if resposta == '1':
             codigo_agendamento = input('Digite um id/codigo para o agendamento: ')
             cpf_cliente = input('Digite o CPF do cliente: ')
@@ -281,13 +281,13 @@ while resposta != '0':
             data_agendamento = input('Digite a data (ex: 12/10): ')
             horario_agendamento = input('Digite o horário (ex: 14:00): ')
 
-            # Verificação amigável para alertar se o cliente ou serviço existem
+            
             if cpf_cliente not in clientes:
                 print('-> Aviso: Este CPF de cliente ainda não está cadastrado!')
             if codigo_servico not in servicos:
                 print('-> Aviso: Este código de serviço ainda não está cadastrado!')
 
-            # Salvando no dicionário agendamentos usando o ID como chave
+            
             agendamentos[codigo_agendamento] = [cpf_cliente, codigo_servico, data_agendamento, horario_agendamento]
 
             print('''
