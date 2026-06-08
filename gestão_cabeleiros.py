@@ -145,63 +145,238 @@ while resposta != '0':
     #MODULO DE SERVIÇOS
     elif resposta == '2':
         print('''
-             ### MODULO DE SERVIÇOS ###
+####### MODULO DE SERVIÇOS #######
              
-             [1] Cadastrar serviço
-             [2] Remover serviço
-             [3] Editar informações de serviço
-             [4] Pesquisar serviço
-             [5] Listar serviços
+[1] Cadastrar serviço
+[2] Remover serviço
+[3] Editar informações de serviço
+[4] Pesquisar serviço
+[5] Listar serviços
              
-            ############################
+#################################
         ''')
 
         resposta = input('escolha uma das opções:')
 
         if resposta == '1':
-            print('Serviço cadastrado com sucesso!!!')
+            codigo_servico = input('Digite o id/codigo so serviço:')
+            nome_servico = input('Digite o nome do serviço (ex: corte):')
+            valor_servico = input('Digite o valor do serviço(R$):')
+            duracao_servico = input('Digite a duração estimada (ex: 30 min): ')
+            
+            servicos[codigo_servico] = [nome_servico,valor_servico,duracao_servico]
+            
+            print('''
+#######################################
+## Serviço Cadastrado com sucesso!!! ##
+#######################################
+                  ''') 
+
+            print('Serviços:',servicos)
+
         elif resposta == '2':
-            print('Serviço removido com sucesso!!!')
+            codigo_servico = input('Digite o codigo do serviço:')
+
+            if codigo_servico in servicos:
+                print("##### Serviços encontrado:")
+                print("##### Nome     :", servicos[codigo_servico][0])
+                print("##### Valor    :", servicos[codigo_servico][1])
+                print("##### Duração  :", servicos[codigo_servico][2])
+
+                comfirmar_excluir = input('Digite [s] para confirmar que deseja excluir:')
+
+                if comfirmar_excluir.lower() == 's':
+                    del servicos[codigo_servico]
+
+                    print('''
+######################################
+## Serviço  Removido com sucesso!!! ##
+######################################
+                        ''')
+                    
+                    print('serviços',servicos)
+
+                else:
+                    print('Remoção do serviço cancelada!!!')
+            
+            else:
+                print('Serviço não encontrado!!!')
         elif resposta == '3':
-            print('Edição do serviço realizada com sucesso!!!')
+            codigo_servico = input('Digite o codigo do serviço:')
+            
+            if codigo_servico in servicos:
+                print("##### Serviço encontrado:")
+                print("##### Nome     :", servicos[codigo_servico][0])
+                print("##### Valor    :", servicos[codigo_servico][1])
+                print("##### Duração  :", servicos[codigo_servico][2])
+
+                novo_nome_servico = input('Digite o novo nome do serviço:')
+                novo_valor_servico = input('Digite o novo valor do serviço (R$):')
+                nova_duracao_servico = input('Digite a nova duração do serviço:')
+
+                servicos[codigo_servico] = [novo_nome_servico, novo_valor_servico, nova_duracao_servico]
+
+                print('''
+####################################
+## Serviço editado com sucesso!!! ##
+####################################
+                    ''')
+
+                print('Serviços:', servicos)
+            
+            else:
+                print('Serviço não encontrado!!!')
+
         elif resposta == '4':
-            print('Pesquisa de serviço realizada com sucesso!!!')
+            codigo_servico = input('Digite o codigo do serviço que deseja realizar a pesquisa:')
+            
+            if codigo_servico in servicos:
+                print("##### Serviço encontrado:")
+                print("##### Nome     :", servicos[codigo_servico][0])
+                print("##### Valor    :", servicos[codigo_servico][1])
+                print("##### Duração  :", servicos[codigo_servico][2])
+                print('''
+#######################################
+## Pesquisa realizada com sucesso!!! ##
+#######################################
+                        ''')
+                
+            else:
+                print('Serviço não encontrado!!!')
+
         elif resposta == '5':
-            print('Lista dos serviços!!!')
+            print('''
+##########################
+## Lista de Serviços!!! ##
+##########################
+                  ''') 
+            print(servicos)
+        
         else:
             print('Nenhuma das opções!!!')
 
 
 
-    #MODULO DE AGENDAMENTOS
+#MODULO DE AGENDAMENTOS
     elif resposta == '3':
         print('''
-             ### MODULO DE AGENDAMENTOS ###
+####### MODULO DE AGENDAMENTOS #######
              
-             [1] Agendar horário
-             [2] Cancelar agendamento
-             [3] Reagendar horário
-             [4] Pesquisar agendamento
-             [5] Listar agendamentos
+[1] Agendar horário
+[2] Cancelar agendamento
+[3] Reagendar horário
+[4] Pesquisar agendamento
+[5] Listar agendamentos
              
-            ############################
+######################################
         ''')
 
         resposta = input('escolha uma das opções:')
 
+        # 1. CADASTRAR AGENDAMENTO
         if resposta == '1':
-            print('Agendamento realizado com sucesso!!!')
+            codigo_agendamento = input('Digite um id/codigo para o agendamento: ')
+            cpf_cliente = input('Digite o CPF do cliente: ')
+            codigo_servico = input('Digite o id/código do serviço: ')
+            data_agendamento = input('Digite a data (ex: 12/10): ')
+            horario_agendamento = input('Digite o horário (ex: 14:00): ')
+
+            # Verificação amigável para alertar se o cliente ou serviço existem
+            if cpf_cliente not in clientes:
+                print('-> Aviso: Este CPF de cliente ainda não está cadastrado!')
+            if codigo_servico not in servicos:
+                print('-> Aviso: Este código de serviço ainda não está cadastrado!')
+
+            # Salvando no dicionário agendamentos usando o ID como chave
+            agendamentos[codigo_agendamento] = [cpf_cliente, codigo_servico, data_agendamento, horario_agendamento]
+
+            print('''
+##########################################
+## Agendamento realizado com sucesso!!! ##
+##########################################
+                  ''') 
+            print('Agendamentos:', agendamentos)
+
         elif resposta == '2':
-            print('Agendamento cancelado com sucesso!!!')
+            codigo_agendamento = input('Digite o código do agendamento que deseja cancelar: ')
+
+            if codigo_agendamento in agendamentos:
+                print("##### Agendamento encontrado:")
+                print("##### CPF Cliente :", agendamentos[codigo_agendamento][0])
+                print("##### Cód. Serviço:", agendamentos[codigo_agendamento][1])
+                print("##### Data        :", agendamentos[codigo_agendamento][2])
+                print("##### Horário     :", agendamentos[codigo_agendamento][3])
+
+                confirmar_excluir = input('Digite [s] para confirmar o cancelamento: ')
+
+                if confirmar_excluir.lower() == 's':
+                    del agendamentos[codigo_agendamento]
+
+                    print('''
+##########################################
+## Agendamento cancelado com sucesso!!! ##
+##########################################
+                        ''')
+                    print('Agendamentos:', agendamentos)
+                else:
+                    print('Cancelamento abortado!!!')
+            else:
+                print('Agendamento não encontrado!!!')
+
         elif resposta == '3':
-            print('Reagendamento realizado com sucesso!!!')
+            codigo_agendamento = input('Digite o código do agendamento que deseja reagendar: ')
+
+            if codigo_agendamento in agendamentos:
+                print("##### Agendamento atual:")
+                print("##### CPF Cliente :", agendamentos[codigo_agendamento][0])
+                print("##### Cód. Serviço:", agendamentos[codigo_agendamento][1])
+                print("##### Data        :", agendamentos[codigo_agendamento][2])
+                print("##### Horário     :", agendamentos[codigo_agendamento][3])
+
+                novo_cpf = input('Digite o novo CPF do cliente (ou repita o atual): ')
+                novo_servico = input('Digite o novo código do serviço (or repita o atual): ')
+                nova_data = input('Digite a nova data: ')
+                novo_horario = input('Digite o novo horário: ')
+
+                agendamentos[codigo_agendamento] = [novo_cpf, novo_servico, nova_data, novo_horario]
+
+                print('''
+############################################
+## Reagendamento realizado com sucesso!!! ##
+############################################
+                    ''')
+                print('Agendamentos:', agendamentos)
+            else:
+                print('Agendamento não encontrado!!!')
+ 
+
         elif resposta == '4':
-            print('Pesquisa de agendamento realizada com sucesso!!!')
+            codigo_agendamento = input('Digite o código do agendamento que deseja pesquisar: ')
+
+            if codigo_agendamento in agendamentos:
+                print("##### Agendamento encontrado:")
+                print("##### CPF Cliente :", agendamentos[codigo_agendamento][0])
+                print("##### Cód. Serviço:", agendamentos[codigo_agendamento][1])
+                print("##### Data        :", agendamentos[codigo_agendamento][2])
+                print("##### Horário     :", agendamentos[codigo_agendamento][3])
+                print('''
+#######################################
+## Pesquisa realizada com sucesso!!! ##
+#######################################
+                        ''')
+            else:
+                print('Agendamento não encontrado!!!')
+
         elif resposta == '5':
-            print('Lista dos agendamentos!!!')
+            print('''
+#############################
+## Lista de Agendamentos!!! ##
+#############################
+                  ''') 
+            print(agendamentos)
+        
         else:
             print('Nenhuma das opções!!!')
-
 
     
     #MODULO DE RELATÓRIOS
@@ -209,9 +384,9 @@ while resposta != '0':
         print('''
              ### MODULO DE RELATÓRIOS ###
              
-             [1] Relatório de faturamento
-             [2] Relatório de atendimentos por cliente
-             [3] Relatório de serviços mais procurados
+             [1] Lista geral de clientes
+             [2] Lista geral de serviços
+             [3] Lista geral de agendamentos
              
             ############################
         ''')
@@ -219,11 +394,11 @@ while resposta != '0':
         resposta = input('escolha uma das opções:')
 
         if resposta == '1':
-            print('Gerando relatório de faturamento!!!')
+            print('... Ainda não temos relatorios ...')
         elif resposta == '2':
-            print('Gerando relatório de atendimentos por cliente!!!')
+            print('... Ainda não temos relatorios ...')
         elif resposta == '3':
-            print('Gerando relatório de serviços mais procurados!!!')
+           print('... Ainda não temos relatorios ...')
         else:
             print('Nenhuma das opções!!!')
 
@@ -232,13 +407,13 @@ while resposta != '0':
     #SOBRE O SISTEMA
     elif resposta == '5':
         print('''
-             ### SOBRE O SISTEMA ###
+             ####################### SOBRE O SISTEMA #########################
              
              Sistema de Gestão de Cabeleireiros
              Desenvolvido para controle de clientes, serviços e agendamentos.
              Desenvolvedor: Ruan Allyson de Araújo Felix
              
-            ############################
+            ##################################################################
         ''')
 
     #SAIR
