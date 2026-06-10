@@ -1,10 +1,10 @@
 print('BEM VINDO, AO SISTEMA DE GESTÃO DE CABELEIREIROS !!!')
 
-clientes = {} 
+clientes = {'111': ['Edna Krabappel', 'krabappel@springfield.com', '(84) 99988-8777']} 
 
-servicos = {}
+servicos = {'111': ['corte americano', '30 R$','30 minutos']}
 
-agendamentos = {}
+agendamentos = {'111': ['111','111', '12/10', '14:00']}
 
 
 resposta = ''
