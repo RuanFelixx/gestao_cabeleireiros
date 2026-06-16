@@ -1,11 +1,41 @@
+import pickle
+
 print('BEM VINDO, AO SISTEMA DE GESTÃO DE CABELEIREIROS !!!')
 
-clientes = {'111': ['Edna Krabappel', 'krabappel@springfield.com', '(84) 99988-8777']} 
+clientes = {} 
+try:
+    arq_clientes = open("clientes.dat","rb")
+    clientes = pickle.load(arq_clientes)
+    arq_clientes.close()
+except:
+    clientes = {'111': ['Edna Krabappel', 'krabappel@springfield.com', '(84) 99988-8777']} 
+    arq_clientes = open('clientes.dat','wb')
+    pickle.dump(clientes, arq_clientes)
+    arq_clientes.close()
 
-servicos = {'111': ['corte americano', '30 R$','30 minutos']}
+servicos = {}
+try:
+    arq_servicos = open("servicos.dat","rb")
+    servicos = pickle.load(arq_servicos)
+    arq_servicos.close()
+except:
+    servicos = {'111': ['corte americano', '30 R$','30 minutos']}
+    arq_servicos = open("servicos.dat","wb")
+    pickle.dump(servicos, arq_servicos)
+    arq_servicos.close()
 
-agendamentos = {'111': ['111','111', '12/10', '14:00']}
+agendamentos = {}
+try:
+    arq_agendamentos = open("agendamentos.dat","rb")
+    agendamentos = pickle.load(arq_agendamentos)
+    arq_agendamentos.close()
+except:
+    agendamentos = {'111': ['111','111', '12/10', '14:00']}
+    arq_agendamentos = open("agendamentos.dat",'wb')
+    pickle.dump(agendamentos, arq_agendamentos)
+    arq_agendamentos.close()
 
+# ADD com base no codigo de Flavius'
 
 resposta = ''
 
@@ -40,7 +70,7 @@ while resposta != '0':
         resposta = input('escolha uma das opções:')
 
         if resposta == '1':
-            cpf_cliente = input('didte o cpf do cliente:')
+            cpf_cliente = input('digite o cpf do cliente:')
             nome_cliente = input('digite o nome do cliente:')
             celular_cliente = input('digite o numero do celular do cliente:')
             email_cliente = input('digite o email do cliente:')
@@ -426,7 +456,18 @@ while resposta != '0':
     
    
 
-   
+arq_clientes = open("clientes.dat", "wb")
+pickle.dump(clientes, arq_clientes)
+arq_clientes.close()
+
+arq_servicos = open("servicos.dat", "wb")
+pickle.dump(servicos, arq_servicos)
+arq_servicos.close()
+
+arq_agendamentos = open("agendamentos.dat", "wb")
+pickle.dump(agendamentos, arq_agendamentos)
+arq_agendamentos.close()
+
 #sistema de gestão para cabeleireiros
 #1 crud para clientes (modulos)
 #2 crud para servios (modulos)
