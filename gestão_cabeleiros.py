@@ -1,4 +1,5 @@
 import pickle
+import os
 
 print('BEM VINDO, AO SISTEMA DE GESTÃO DE CABELEIREIROS !!!')
 
@@ -41,7 +42,7 @@ resposta = ''
 
 
 while resposta != '0':
-
+    os.system('cls' if os.name == 'nt' else 'clear')
     print('''
 [1]Gerenciar clientes
 [2]Gerenciar serviços
@@ -52,9 +53,10 @@ while resposta != '0':
     ''')
 
     #MODULO DE CLIENTES
-    resposta = input('escolha uma das opções:')
+    pri_resposta = input('escolha uma das opções:')
    
-    if resposta == '1':
+    if pri_resposta == '1':
+        os.system('cls' if os.name == 'nt' else 'clear')
         print('''
 ######### MODULO DE CLIENTES ##########
                                                  
@@ -67,9 +69,9 @@ while resposta != '0':
 ######################################
         ''')
 
-        resposta = input('escolha uma das opções:')
+        seg_resposta = input('escolha uma das opções:')
 
-        if resposta == '1':
+        if seg_resposta == '1':
             cpf_cliente = input('digite o cpf do cliente:')
             nome_cliente = input('digite o nome do cliente:')
             celular_cliente = input('digite o numero do celular do cliente:')
@@ -87,7 +89,7 @@ while resposta != '0':
 
             
         
-        elif resposta == '2':
+        elif seg_resposta == '2':
             cpf_cliente = input('Digite o cpf do cliente:')
 
             if cpf_cliente in clientes:
@@ -118,7 +120,7 @@ while resposta != '0':
 
             
 
-        elif resposta == '3':
+        elif seg_resposta == '3':
             cpf_cliente = input('Digite o cpf do cliente:')
             if cpf_cliente in clientes:
                 print("##### Cliente encontrado:")
@@ -144,7 +146,7 @@ while resposta != '0':
                 print('Cliente não encontrado!!!')
            
         
-        elif resposta == '4':
+        elif seg_resposta == '4':
             cpf_cliente = input('Digite o cpf do cliente que deseja realizar a pesquisa:')
             if cpf_cliente in clientes:
                 print("##### Cliente encontrado:")
@@ -160,7 +162,7 @@ while resposta != '0':
             else:
                 print('Cliente não encontrado!!!')
 
-        elif resposta == '5':
+        elif seg_resposta == '5':
             print('''
 ##########################
 ## Lista de Clientes!!! ##
@@ -173,7 +175,8 @@ while resposta != '0':
 
 
     #MODULO DE SERVIÇOS
-    elif resposta == '2':
+    elif pri_resposta == '2':
+        os.system('cls' if os.name == 'nt' else 'clear')
         print('''
 ####### MODULO DE SERVIÇOS #######
              
@@ -186,9 +189,9 @@ while resposta != '0':
 #################################
         ''')
 
-        resposta = input('escolha uma das opções:')
+        seg_resposta = input('escolha uma das opções:')
 
-        if resposta == '1':
+        if seg_resposta == '1':
             codigo_servico = input('Digite o id/codigo so serviço:')
             nome_servico = input('Digite o nome do serviço (ex: corte):')
             valor_servico = input('Digite o valor do serviço(R$):')
@@ -204,7 +207,7 @@ while resposta != '0':
 
             print('Serviços:',servicos)
 
-        elif resposta == '2':
+        elif seg_resposta == '2':
             codigo_servico = input('Digite o codigo do serviço:')
 
             if codigo_servico in servicos:
@@ -231,7 +234,7 @@ while resposta != '0':
             
             else:
                 print('Serviço não encontrado!!!')
-        elif resposta == '3':
+        elif seg_resposta == '3':
             codigo_servico = input('Digite o codigo do serviço:')
             
             if codigo_servico in servicos:
@@ -257,7 +260,7 @@ while resposta != '0':
             else:
                 print('Serviço não encontrado!!!')
 
-        elif resposta == '4':
+        elif seg_resposta == '4':
             codigo_servico = input('Digite o codigo do serviço que deseja realizar a pesquisa:')
             
             if codigo_servico in servicos:
@@ -274,7 +277,7 @@ while resposta != '0':
             else:
                 print('Serviço não encontrado!!!')
 
-        elif resposta == '5':
+        elif seg_resposta == '5':
             print('''
 ##########################
 ## Lista de Serviços!!! ##
@@ -288,7 +291,8 @@ while resposta != '0':
 
 
 #MODULO DE AGENDAMENTOS
-    elif resposta == '3':
+    elif pri_resposta == '3':
+        os.system('cls' if os.name == 'nt' else 'clear')
         print('''
 ####### MODULO DE AGENDAMENTOS #######
              
@@ -301,10 +305,10 @@ while resposta != '0':
 ######################################
         ''')
 
-        resposta = input('escolha uma das opções:')
+        seg_resposta = input('escolha uma das opções:')
 
         
-        if resposta == '1':
+        if seg_resposta == '1':
             codigo_agendamento = input('Digite um id/codigo para o agendamento: ')
             cpf_cliente = input('Digite o CPF do cliente: ')
             codigo_servico = input('Digite o id/código do serviço: ')
@@ -327,7 +331,7 @@ while resposta != '0':
                   ''') 
             print('Agendamentos:', agendamentos)
 
-        elif resposta == '2':
+        elif seg_resposta == '2':
             codigo_agendamento = input('Digite o código do agendamento que deseja cancelar: ')
 
             if codigo_agendamento in agendamentos:
@@ -353,7 +357,7 @@ while resposta != '0':
             else:
                 print('Agendamento não encontrado!!!')
 
-        elif resposta == '3':
+        elif seg_resposta == '3':
             codigo_agendamento = input('Digite o código do agendamento que deseja reagendar: ')
 
             if codigo_agendamento in agendamentos:
@@ -380,7 +384,7 @@ while resposta != '0':
                 print('Agendamento não encontrado!!!')
  
 
-        elif resposta == '4':
+        elif seg_resposta == '4':
             codigo_agendamento = input('Digite o código do agendamento que deseja pesquisar: ')
 
             if codigo_agendamento in agendamentos:
@@ -397,7 +401,7 @@ while resposta != '0':
             else:
                 print('Agendamento não encontrado!!!')
 
-        elif resposta == '5':
+        elif seg_resposta == '5':
             print('''
 #############################
 ## Lista de Agendamentos!!! ##
@@ -410,7 +414,8 @@ while resposta != '0':
 
     
     #MODULO DE RELATÓRIOS
-    elif resposta == '4':
+    elif pri_resposta == '4':
+        os.system('cls' if os.name == 'nt' else 'clear')
         print('''
              ### MODULO DE RELATÓRIOS ###
              
@@ -421,13 +426,13 @@ while resposta != '0':
             ############################
         ''')
 
-        resposta = input('escolha uma das opções:')
+        seg_resposta = input('escolha uma das opções:')
 
-        if resposta == '1':
+        if seg_resposta == '1':
             print('... Ainda não temos relatorios ...')
-        elif resposta == '2':
+        elif seg_resposta == '2':
             print('... Ainda não temos relatorios ...')
-        elif resposta == '3':
+        elif seg_resposta == '3':
            print('... Ainda não temos relatorios ...')
         else:
             print('Nenhuma das opções!!!')
@@ -435,23 +440,27 @@ while resposta != '0':
 
     
     #SOBRE O SISTEMA
-    elif resposta == '5':
+    elif pri_resposta == '5':
+        os.system('cls' if os.name == 'nt' else 'clear')
         print('''
              ####################### SOBRE O SISTEMA #########################
              
              Sistema de Gestão de Cabeleireiros
              Desenvolvido para controle de clientes, serviços e agendamentos.
-             Desenvolvedor: Ruan Allyson de Araújo Felix
+             Desenvolvedor: Ruan Allyson de Araújo Felix 
+             Professor: Flavius 
              
             ##################################################################
         ''')
 
     #SAIR
-    elif resposta == '0':
+    elif pri_resposta == '0':
+        os.system('cls' if os.name == 'nt' else 'clear')
         print('Saindo do sistema... Até logo!')
         break
     
     else:
+        os.system('cls' if os.name == 'nt' else 'clear')
         print('Nenhuma das opções!!!')
     
    
