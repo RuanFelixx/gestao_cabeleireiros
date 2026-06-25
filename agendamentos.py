@@ -3,7 +3,6 @@ import os
 def modulo_agendamentos(clientes,servicos,agendamentos):
     resposta_agendamentos = ''
     while resposta_agendamentos != '0':
-        os.system('cls' if os.name == 'nt' else 'clear')
         print('''
 ####### MODULO DE AGENDAMENTOS #######
              

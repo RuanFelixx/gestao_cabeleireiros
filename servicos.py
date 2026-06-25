@@ -3,7 +3,6 @@ import os
 def modulo_servicos(servicos):
     resposta_servico = ''
     while resposta_servico != '0':
-        os.system('cls' if os.name == 'nt' else 'clear')
         print('''
 ####### MODULO DE SERVIÇOS #######
              

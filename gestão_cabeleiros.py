@@ -46,7 +46,7 @@ resposta_prin = ''
 
 
 while resposta_prin != '0':
-    os.system('cls' if os.name == 'nt' else 'clear')
+    
     print('''
 [1]Gerenciar clientes
 [2]Gerenciar serviços
@@ -84,20 +84,21 @@ while resposta_prin != '0':
     elif resposta_prin == '5':
         os.system('cls' if os.name == 'nt' else 'clear')
         print('''
-             #################################################################
-             ####################### SOBRE O SISTEMA #########################
-             #################################################################
-             ###                                                           ###
-             ### Sistema de Gestão de Cabeleireiros                        ###
-             ###                                                           ###
-             ### para controle de clientes, serviços e agendamentos.       ###
-             ###                                                           ###
-             ### Desenvolvedor:                                            ###
-             ### Ruan Allyson de Araújo Felix                              ###
-             ###                                                           ###
-             ### Professor:                                                ###
-             ### Flavius                                                   ###
-             #################################################################                                                           
+             #############################################################
+             ##################### SOBRE O SISTEMA #######################
+             #############################################################
+             #                                                           #
+             #           Sistema de Gestão de Cabeleireiros              #
+             #                                                           #
+             # para:                                                     #
+             # controle de clientes, serviços e agendamentos.            #
+             #                                                           #
+             # Desenvolvedor:                                            #
+             # Ruan Allyson de Araújo Felix                              #
+             #                                                           #
+             # Professor:                                                #
+             # Flavius                                                   #
+             #############################################################                                                          
              
         ''') 
 

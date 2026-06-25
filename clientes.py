@@ -47,7 +47,6 @@ def modulo_clientes(clientes):
      
     resposta_cliente = ''
     while resposta_cliente != '0':
-        os.system('cls' if os.name == 'nt' else 'clear')
         print('''
 ######### MODULO DE CLIENTES ##########
                                                  
