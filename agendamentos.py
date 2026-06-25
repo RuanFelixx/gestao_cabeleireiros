@@ -28,9 +28,9 @@ def modulo_agendamentos(clientes,servicos,agendamentos):
 
             
             if cpf_cliente not in clientes:
-                print('-> Aviso: Este CPF de cliente ainda não está cadastrado!')
+                print('Este CPF de cliente ainda não está cadastrado!')
             if codigo_servico not in servicos:
-                print('-> Aviso: Este código de serviço ainda não está cadastrado!')
+                print('Este código de serviço ainda não está cadastrado!')
 
             
             agendamentos[codigo_agendamento] = [cpf_cliente, codigo_servico, data_agendamento, horario_agendamento]

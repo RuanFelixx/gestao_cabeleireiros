@@ -4,7 +4,8 @@ def validar_cpf(cpf):
 
     cpf = cpf.replace('-','')
     cpf = cpf.replace('.','')
-
+    
+    
     if len(cpf) != 11:
         return False
     
@@ -63,18 +64,33 @@ def modulo_clientes(clientes):
 
         if resposta_cliente == '1':
             cpf_cliente = input('digite o cpf do cliente:')
-            if validar_cpf(cpf_cliente) == False:
-                print('CPF invalido !')
+            while True:
+                if validar_cpf(cpf_cliente) == False:
+                    print('CPF invalido !')
+                    cpf_cliente = input('digite o cpf do cliente novamente:')
+                else:
+                    print('CPF valido')
+                    break
 
-            nome_cliente = input('digite o nome do cliente:')
+            nome_cliente = input('digite o nome do cliente:').lower()
 
             celular_cliente = input('digite o numero do celular do cliente:')
-            if validar_celular(celular_cliente) == False:
-                print('Numero de celular invalido !')
+            while True:
+                if validar_celular(celular_cliente) == False:
+                    print('Numero de celular invalido !')
+                    celular_cliente = input('digite o numero do celular do cliente novamente:')
+                else:
+                    print('Numeto de celular valido!')
+                    break
 
             email_cliente = input('digite o email do cliente:')
-            if validar_email(email_cliente) == False:
-                print('Email invalido !')
+            while True:
+                if validar_email(email_cliente) == False:
+                    print('Email invalido !')
+                    email_cliente = input('digite o email do cliente novamente:')
+                else:
+                    print('Email valido!')
+                    break
 
             clientes[cpf_cliente] = [nome_cliente, email_cliente, celular_cliente] 
 

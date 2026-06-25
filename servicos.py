@@ -18,7 +18,7 @@ def modulo_servicos(servicos):
 
         if resposta_servico == '1':
             codigo_servico = input('Digite o id/codigo so serviço:')
-            nome_servico = input('Digite o nome do serviço (ex: corte):')
+            nome_servico = input('Digite o nome do serviço (ex: corte):').lower
             valor_servico = input('Digite o valor do serviço(R$):')
             duracao_servico = input('Digite a duração estimada (ex: 30 min): ')
             
