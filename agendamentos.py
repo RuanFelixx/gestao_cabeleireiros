@@ -70,7 +70,7 @@ def modulo_agendamentos(clientes,servicos,agendamentos):
                 confirmar_excluir = input('Digite [s] para confirmar o cancelamento: ')
 
                 if confirmar_excluir.lower() == 's':
-                    agendamentos[codigo_agendamento][3] = False
+                    agendamentos[codigo_agendamento][4] = False
 
                     print('''
 ##########################################
@@ -98,7 +98,7 @@ def modulo_agendamentos(clientes,servicos,agendamentos):
                 nova_data = input('Digite a nova data: ')
                 novo_horario = input('Digite o novo horário: ')
 
-                status_agendamento = agendamentos[codigo_agendamento][3]
+                status_agendamento = agendamentos[codigo_agendamento][4]
 
                 agendamentos[codigo_agendamento] = [novo_cpf, novo_servico, nova_data, novo_horario, status_agendamento]
 
@@ -127,7 +127,7 @@ def modulo_agendamentos(clientes,servicos,agendamentos):
 #######################################
                         ''')
                 
-                if agendamentos[codigo_agendamento][3] == True:
+                if agendamentos[codigo_agendamento][4] == True:
                     print('#### Status: Ativo')
 
                 else:
@@ -142,6 +142,33 @@ def modulo_agendamentos(clientes,servicos,agendamentos):
 ##############################
                   ''') 
             print(agendamentos)
+            for cod, dados in agendamentos.items():
+                if dados[4] == True:
+                    print('#### Cod. do agendamento:',cod)
+                    print('#### CPF do cliente:',dados[0])
+                    print('#### Cod. do serviço:',dados[1])
+                    print('#### Data do agendamento:',dados[2])
+                    print('#### Horario do agendamento:',dados[3])
+                    
         
+        elif resposta_agendamentos == '6':
+            codigo_agendamento = input('Digite o codigo do agendamento que você deseja reativar:')
+
+            if codigo_agendamento in agendamentos:
+
+                if agendamentos[codigo_agendamento][3] == False:
+                    agendamentos[codigo_agendamento][3] = True
+
+                    print('''
+###########################################
+### Agendamento reativado com sucesso!!! ##
+###########################################
+                    ''')
+
+                else:
+                    print('Este agendamento já estava ativo!')
+            else:
+                print('Este agendamento não foi cadastrado anteriormente!')
+
         else:
             print('Nenhuma das opções!!!')
