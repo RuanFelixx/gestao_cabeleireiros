@@ -70,7 +70,7 @@ def modulo_agendamentos(clientes,servicos,agendamentos):
                 confirmar_excluir = input('Digite [s] para confirmar o cancelamento: ')
 
                 if confirmar_excluir.lower() == 's':
-                    del agendamentos[codigo_agendamento]
+                    agendamentos[codigo_agendamento][3] = False
 
                     print('''
 ##########################################
@@ -98,7 +98,9 @@ def modulo_agendamentos(clientes,servicos,agendamentos):
                 nova_data = input('Digite a nova data: ')
                 novo_horario = input('Digite o novo horário: ')
 
-                agendamentos[codigo_agendamento] = [novo_cpf, novo_servico, nova_data, novo_horario]
+                status_agendamento = agendamentos[codigo_agendamento][3]
+
+                agendamentos[codigo_agendamento] = [novo_cpf, novo_servico, nova_data, novo_horario, status_agendamento]
 
                 print('''
 ############################################
@@ -124,6 +126,12 @@ def modulo_agendamentos(clientes,servicos,agendamentos):
 ## Pesquisa realizada com sucesso!!! ##
 #######################################
                         ''')
+                
+                if agendamentos[codigo_agendamento][3] == True:
+                    print('#### Status: Ativo')
+
+                else:
+                    print('#### Status: Inativo')
             else:
                 print('Agendamento não encontrado!!!')
 

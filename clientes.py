@@ -211,9 +211,9 @@ def modulo_clientes(clientes):
                     ''')
 
                 else:
-                    print('Este CPF já estava ativo!')
+                    print('Este cliente já estava ativo!')
             else:
-                print('Este CPF não foi cadastrado anteriormente!')
+                print('Este cliente não foi cadastrado anteriormente!')
         else:
             print('Nenhuma das opções!!!')
         

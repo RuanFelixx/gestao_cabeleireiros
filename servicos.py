@@ -61,7 +61,7 @@ def modulo_servicos(servicos):
                 comfirmar_excluir = input('Digite [s] para confirmar que deseja excluir:')
 
                 if comfirmar_excluir.lower() == 's':
-                    del servicos[codigo_servico]
+                    servicos[codigo_servico][3] = False
 
                     print('''
 ######################################
@@ -89,7 +89,9 @@ def modulo_servicos(servicos):
                 novo_valor_servico = input('Digite o novo valor do serviço (R$):')
                 nova_duracao_servico = input('Digite a nova duração do serviço:')
 
-                servicos[codigo_servico] = [novo_nome_servico, novo_valor_servico, nova_duracao_servico]
+                status_servicos = servicos[codigo_servico][3]
+
+                servicos[codigo_servico] = [novo_nome_servico, novo_valor_servico, nova_duracao_servico, status_servicos]
 
                 print('''
 ####################################
@@ -110,11 +112,18 @@ def modulo_servicos(servicos):
                 print("##### Nome     :", servicos[codigo_servico][0])
                 print("##### Valor    :", servicos[codigo_servico][1])
                 print("##### Duração  :", servicos[codigo_servico][2])
+
                 print('''
 #######################################
 ## Pesquisa realizada com sucesso!!! ##
-#######################################
-                        ''')
+#######################################    
+                    ''')
+                
+                if servicos[codigo_servico][3] == True:
+                    print('#### Status: Ativo')
+
+                else:
+                    print('#### Status: Inativo')
                 
             else:
                 print('Serviço não encontrado!!!')
@@ -125,8 +134,32 @@ def modulo_servicos(servicos):
 ## Lista de Serviços!!! ##
 ##########################
                   ''') 
-            print(servicos)
+            for cod, dados in servicos.items():
+                if [dados][3] == True:
+                    print('#### Cod. serviço:',cod)
+                    print('#### Nome do serviço:',nome_servico)
+                    print('#### Valor do serviço:',valor_servico)
+                    print('#### Duração do serviço:',duracao_servico)
         
+        elif resposta_servico == '6':
+            codigo_servico = input('Digite o codigo do serviço que você deseja reativar:')
+
+            if codigo_servico in servicos:
+
+                if servicos[codigo_servico][3] == False:
+                    servicos[codigo_servico][3] = True
+
+                    print('''
+########################################
+### Serviço reativado com sucesso!!!  ##
+########################################
+                    ''')
+
+                else:
+                    print('Este serviço já estava ativo!')
+            else:
+                print('Este serviço não foi cadastrado anteriormente!')
+
         else:
             print('Nenhuma das opções!!!')
 
