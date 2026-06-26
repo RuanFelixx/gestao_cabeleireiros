@@ -2,8 +2,9 @@ from clientes import modulo_clientes
 from servicos import modulo_servicos
 from agendamentos import modulo_agendamentos
 from relatorios import modulo_relatorios
+from sobre import modulo_sobre
 import pickle
-import os
+
 
 print('BEM VINDO, AO SISTEMA DE GESTÃO DE CABELEIREIROS !!!')
 
@@ -13,7 +14,7 @@ try:
     clientes = pickle.load(arq_clientes)
     arq_clientes.close()
 except:
-    clientes = {'111': ['Edna Krabappel', 'krabappel@springfield.com', '(84) 99988-8777']} 
+    clientes = {'111.111.111-00': ['Edna Krabappel', 'krabappel@springfield.com', '(84) 99988-8777', True]} 
     arq_clientes = open('clientes.dat','wb')
     pickle.dump(clientes, arq_clientes)
     arq_clientes.close()
@@ -24,7 +25,7 @@ try:
     servicos = pickle.load(arq_servicos)
     arq_servicos.close()
 except:
-    servicos = {'111': ['corte americano', '30 R$','30 minutos']}
+    servicos = {'111': ['corte americano', '30 R$','30 minutos', True]}
     arq_servicos = open("servicos.dat","wb")
     pickle.dump(servicos, arq_servicos)
     arq_servicos.close()
@@ -35,7 +36,7 @@ try:
     agendamentos = pickle.load(arq_agendamentos)
     arq_agendamentos.close()
 except:
-    agendamentos = {'111': ['111','111', '12/10', '14:00']}
+    agendamentos = {'111': ['111-111-111.00','111', '12/10', '14:00', True]}
     arq_agendamentos = open("agendamentos.dat",'wb')
     pickle.dump(agendamentos, arq_agendamentos)
     arq_agendamentos.close()
@@ -56,13 +57,13 @@ while resposta_prin != '0':
 [0]Sair
     ''')
 
-    #MODULO DE CLIENTES
+
     resposta_prin = input('escolha uma das opções:')
-   
+
+    #MODULO DE CLIENTES
     if resposta_prin == '1':
         modulo_clientes(clientes)
         
-
 
     #MODULO DE SERVIÇOS
     elif resposta_prin == '2':
@@ -78,38 +79,17 @@ while resposta_prin != '0':
     elif resposta_prin == '4':
         modulo_relatorios(clientes, servicos, agendamentos)
 
-
     
     #SOBRE O SISTEMA
     elif resposta_prin == '5':
-        os.system('cls' if os.name == 'nt' else 'clear')
-        print('''
-             #############################################################
-             ##################### SOBRE O SISTEMA #######################
-             #############################################################
-             #                                                           #
-             #           Sistema de Gestão de Cabeleireiros              #
-             #                                                           #
-             # para:                                                     #
-             # controle de clientes, serviços e agendamentos.            #
-             #                                                           #
-             # Desenvolvedor:                                            #
-             # Ruan Allyson de Araújo Felix                              #
-             #                                                           #
-             # Professor:                                                #
-             # Flavius                                                   #
-             #############################################################                                                          
-             
-        ''') 
+        modulo_sobre()
 
     #SAIR
     elif resposta_prin == '0':
-        os.system('cls' if os.name == 'nt' else 'clear')
         print('Saindo do sistema... Até logo!')
         break
     
     else:
-        os.system('cls' if os.name == 'nt' else 'clear')
         print('Nenhuma das opções!!!')
     
    

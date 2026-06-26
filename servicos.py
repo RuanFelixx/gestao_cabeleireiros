@@ -1,4 +1,20 @@
-import os 
+import random
+
+def gerar_codigo(servicos):
+
+    while True:
+
+        n1 = random.randint(0,9)
+        n2 = random.randint(0,9)
+        n3 = random.randint(0,9)
+
+        cod = str(n1) + str(n2) + str(n3)
+
+        if cod not in servicos:
+            return cod
+
+            
+
 
 def modulo_servicos(servicos):
     resposta_servico = ''
@@ -11,22 +27,23 @@ def modulo_servicos(servicos):
 [3] Editar informações de serviço
 [4] Pesquisar serviço
 [5] Listar serviços
+[6] Reabilitar Serviços
 [0] Voltar             
 #################################
         ''')
         resposta_servico = input('escolha uma das opções:')
 
         if resposta_servico == '1':
-            codigo_servico = input('Digite o id/codigo so serviço:')
+            codigo_servico = gerar_codigo(servicos)
             nome_servico = input('Digite o nome do serviço (ex: corte):').lower
             valor_servico = input('Digite o valor do serviço(R$):')
             duracao_servico = input('Digite a duração estimada (ex: 30 min): ')
             
-            servicos[codigo_servico] = [nome_servico,valor_servico,duracao_servico]
+            servicos[codigo_servico] = [nome_servico,valor_servico,duracao_servico, True]
             
             print('''
 #######################################
-## Serviço Cadastrado com sucesso!!! ##\
+## Serviço Cadastrado com sucesso!!! ##
 #######################################
                   ''') 
 

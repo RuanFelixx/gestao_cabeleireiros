@@ -1,4 +1,18 @@
-import os 
+import random
+
+def gerar_codigo(servicos):
+
+    while True:
+
+        n1 = random.randint(0,9)
+        n2 = random.randint(0,9)
+        n3 = random.randint(0,9)
+
+        cod = str(n1) + str(n2) + str(n3)
+
+        if cod not in servicos:
+            return cod
+
 
 def modulo_agendamentos(clientes,servicos,agendamentos):
     resposta_agendamentos = ''
@@ -11,6 +25,7 @@ def modulo_agendamentos(clientes,servicos,agendamentos):
 [3] Reagendar horário
 [4] Pesquisar agendamento
 [5] Listar agendamentos
+[6] Reabilitar agendamento 
 [0] Voltar
              
 ######################################
@@ -20,9 +35,9 @@ def modulo_agendamentos(clientes,servicos,agendamentos):
 
         
         if resposta_agendamentos == '1':
-            codigo_agendamento = input('Digite um id/codigo para o agendamento: ')
+            codigo_agendamento = gerar_codigo(agendamentos)
             cpf_cliente = input('Digite o CPF do cliente: ')
-            codigo_servico = input('Digite o id/código do serviço: ')
+            codigo_servico = input('Digite o código do serviço: ')
             data_agendamento = input('Digite a data (ex: 12/10): ')
             horario_agendamento = input('Digite o horário (ex: 14:00): ')
 
@@ -33,7 +48,7 @@ def modulo_agendamentos(clientes,servicos,agendamentos):
                 print('Este código de serviço ainda não está cadastrado!')
 
             
-            agendamentos[codigo_agendamento] = [cpf_cliente, codigo_servico, data_agendamento, horario_agendamento]
+            agendamentos[codigo_agendamento] = [cpf_cliente, codigo_servico, data_agendamento, horario_agendamento, True]
 
             print('''
 ##########################################

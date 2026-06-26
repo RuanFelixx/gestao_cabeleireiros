@@ -1,5 +1,3 @@
-import os 
-
 def validar_cpf(cpf):
 
     cpf = cpf.replace('-','')
@@ -56,6 +54,7 @@ def modulo_clientes(clientes):
 [3] Editar informações de cliente
 [4] Pesquisar cliente
 [5] Listar clientes
+[6] Reabilitar cliente
 [0] Voltar
              
 ######################################
@@ -92,7 +91,7 @@ def modulo_clientes(clientes):
                     print('Email valido!')
                     break
 
-            clientes[cpf_cliente] = [nome_cliente, email_cliente, celular_cliente] 
+            clientes[cpf_cliente] = [nome_cliente, email_cliente, celular_cliente, True] 
 
             print('''
 #######################################
@@ -116,7 +115,7 @@ def modulo_clientes(clientes):
                 comfirmar_excluir = input('Digite [s] para confirmar que deseja excluir:')
 
                 if comfirmar_excluir.lower() == 's':
-                    del clientes[cpf_cliente]
+                    clientes[cpf_cliente][3] = False
 
                     print('''
 ######################################
@@ -147,7 +146,9 @@ def modulo_clientes(clientes):
                 novo_email_cliente = input('Digite o novo email do cliente:')
                 novo_celular_cliente = input('Digite o novo celular do cliente:')
 
-                clientes[cpf_cliente] = [novo_nome_cliente, novo_email_cliente, novo_celular_cliente]
+                status_clientes = clientes[cpf_cliente][3]
+
+                clientes[cpf_cliente] = [novo_nome_cliente, novo_email_cliente, novo_celular_cliente, status_clientes]
 
                 print('''
 ####################################
@@ -173,6 +174,10 @@ def modulo_clientes(clientes):
 ## Pesquisa realizada com sucesso!!! ##
 #######################################
                         ''')
+                if clientes[cpf_cliente][3] == True:
+                    print('##### Status: Ativo')
+                else:
+                    print('#### Status: Inativo')
                 
             else:
                 print('Cliente não encontrado!!!')
@@ -183,8 +188,32 @@ def modulo_clientes(clientes):
 ## Lista de Clientes!!! ##
 ##########################
                   ''') 
-            print(clientes)
-        
+            for cpf, dados in clientes.items():
+                if dados[3] == True:
+                    print('#### CPF:', cpf)
+                    print('#### Nome:', dados[0])
+                    print('#### Email:', dados[1])
+                    print('#### Celular:',dados[2])
+
+        elif resposta_cliente == '6':
+            cpf_cliente = input('Digite o CPF do cliente que você deseja reativar:')
+
+            if cpf_cliente in clientes:
+
+                if clientes[cpf_cliente][3] == False:
+
+                    clientes[cpf_cliente][3] = True
+
+                    print('''
+########################################
+### Cliente reativado com sucesso!!!  ##
+########################################
+                    ''')
+
+                else:
+                    print('Este CPF já estava ativo!')
+            else:
+                print('Este CPF não foi cadastrado anteriormente!')
         else:
             print('Nenhuma das opções!!!')
         

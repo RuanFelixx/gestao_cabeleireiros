@@ -1,6 +1,3 @@
-import os
-
-
 def transformar_data(data):
     dia, mes = data.split('/')
     return int(mes)*30 + int(dia)
