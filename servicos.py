@@ -1,9 +1,7 @@
 import random
 
 def gerar_codigo(servicos):
-
     while True:
-
         n1 = random.randint(0,9)
         n2 = random.randint(0,9)
         n3 = random.randint(0,9)
@@ -12,8 +10,6 @@ def gerar_codigo(servicos):
 
         if cod not in servicos:
             return cod
-
-            
 
 
 def modulo_servicos(servicos):
@@ -35,11 +31,14 @@ def modulo_servicos(servicos):
 
         if resposta_servico == '1':
             codigo_servico = gerar_codigo(servicos)
-            nome_servico = input('Digite o nome do serviço (ex: corte):').lower
+            print('Codigo do serviço:', codigo_servico)
+            
+            # CORREÇÃO: Adicionado os parênteses () no .lower()
+            nome_servico = input('Digite o nome do serviço (ex: corte):').lower()
             valor_servico = input('Digite o valor do serviço(R$):')
             duracao_servico = input('Digite a duração estimada (ex: 30 min): ')
             
-            servicos[codigo_servico] = [nome_servico,valor_servico,duracao_servico, True]
+            servicos[codigo_servico] = [nome_servico, valor_servico, duracao_servico, True]
             
             print('''
 #######################################
@@ -47,7 +46,7 @@ def modulo_servicos(servicos):
 #######################################
                   ''') 
 
-            print('Serviços:',servicos)
+            print('Serviços:', servicos)
 
         elif resposta_servico == '2':
             codigo_servico = input('Digite o codigo do serviço:')
@@ -69,13 +68,14 @@ def modulo_servicos(servicos):
 ######################################
                         ''')
                     
-                    print('serviços',servicos)
+                    print('serviços', servicos)
 
                 else:
                     print('Remoção do serviço cancelada!!!')
             
             else:
                 print('Serviço não encontrado!!!')
+
         elif resposta_servico == '3':
             codigo_servico = input('Digite o codigo do serviço:')
             
@@ -85,7 +85,8 @@ def modulo_servicos(servicos):
                 print("##### Valor    :", servicos[codigo_servico][1])
                 print("##### Duração  :", servicos[codigo_servico][2])
 
-                novo_nome_servico = input('Digite o novo nome do serviço:')
+                # CORREÇÃO: Adicionado .lower() para manter o padrão
+                novo_nome_servico = input('Digite o novo nome do serviço:').lower()
                 novo_valor_servico = input('Digite o novo valor do serviço (R$):')
                 nova_duracao_servico = input('Digite a nova duração do serviço:')
 
@@ -121,7 +122,6 @@ def modulo_servicos(servicos):
                 
                 if servicos[codigo_servico][3] == True:
                     print('#### Status: Ativo')
-
                 else:
                     print('#### Status: Inativo')
                 
@@ -135,17 +135,18 @@ def modulo_servicos(servicos):
 ##########################
                   ''') 
             for cod, dados in servicos.items():
-                if [dados][3] == True:
-                    print('#### Cod. serviço:',cod)
-                    print('#### Nome do serviço:',nome_servico)
-                    print('#### Valor do serviço:',valor_servico)
-                    print('#### Duração do serviço:',duracao_servico)
-        
+                # CORREÇÃO: Removido os colchetes de [dados] e ajustado as variáveis internas
+                if dados[3] == True:
+                    print('#### Cod. serviço:', cod)
+                    print('#### Nome do serviço:', dados[0])
+                    print('#### Valor do serviço:', dados[1])
+                    print('#### Duração do serviço:', dados[2])
+                    print('-' * 30) # Linha separadora opcional para legibilidade
+
         elif resposta_servico == '6':
             codigo_servico = input('Digite o codigo do serviço que você deseja reativar:')
 
             if codigo_servico in servicos:
-
                 if servicos[codigo_servico][3] == False:
                     servicos[codigo_servico][3] = True
 
@@ -154,12 +155,13 @@ def modulo_servicos(servicos):
 ### Serviço reativado com sucesso!!!  ##
 ########################################
                     ''')
-
                 else:
                     print('Este serviço já estava ativo!')
             else:
                 print('Este serviço não foi cadastrado anteriormente!')
 
+        elif resposta_servico == '0':
+            print('Saindo do módulo de serviços...')
+
         else:
             print('Nenhuma das opções!!!')
-

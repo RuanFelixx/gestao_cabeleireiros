@@ -36,6 +36,7 @@ def modulo_agendamentos(clientes,servicos,agendamentos):
         
         if resposta_agendamentos == '1':
             codigo_agendamento = gerar_codigo(agendamentos)
+            print('codigo do agendamento:',codigo_agendamento)
             cpf_cliente = input('Digite o CPF do cliente: ')
             codigo_servico = input('Digite o código do serviço: ')
             data_agendamento = input('Digite a data (ex: 12/10): ')
@@ -141,7 +142,6 @@ def modulo_agendamentos(clientes,servicos,agendamentos):
 ## Lista de Agendamentos!!! ##
 ##############################
                   ''') 
-            print(agendamentos)
             for cod, dados in agendamentos.items():
                 if dados[4] == True:
                     print('#### Cod. do agendamento:',cod)

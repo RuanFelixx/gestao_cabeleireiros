@@ -36,7 +36,7 @@ try:
     agendamentos = pickle.load(arq_agendamentos)
     arq_agendamentos.close()
 except:
-    agendamentos = {'111': ['111-111-111.00','111', '12/10', '14:00', True]}
+    agendamentos = {'111': ['111.111.111-00','111', '12/10', '14:00', True]}
     arq_agendamentos = open("agendamentos.dat",'wb')
     pickle.dump(agendamentos, arq_agendamentos)
     arq_agendamentos.close()

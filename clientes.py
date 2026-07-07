@@ -1,45 +1,34 @@
 def validar_cpf(cpf):
-
-    cpf = cpf.replace('-','')
-    cpf = cpf.replace('.','')
-    
+    cpf = cpf.replace('-', '')
+    cpf = cpf.replace('.', '')
     
     if len(cpf) != 11:
         return False
-    
     elif not cpf.isdigit():
         return False
-    
     else:
         return True
     
 def validar_email(email):
-
     if '@' not in email:
         return False
-    
     elif '.com' not in email:
         return False
-    
     else:
         return True
     
 def validar_celular(celular):
-    
-    celular = celular.replace('(','')
-    celular = celular.replace(')','')
-    celular = celular.replace('-','')
-    celular = celular.replace(' ','')
+    celular = celular.replace('(', '')
+    celular = celular.replace(')', '')
+    celular = celular.replace('-', '')
+    celular = celular.replace(' ', '')
 
     if len(celular) != 11:
         return False
-    
     elif not celular.isdigit():
         return False
-    
     else:
         return True
-
 
 
 def modulo_clientes(clientes):
@@ -48,7 +37,7 @@ def modulo_clientes(clientes):
     while resposta_cliente != '0':
         print('''
 ######### MODULO DE CLIENTES ##########
-                                                 
+                                       
 [1] Cadastrar cliente               
 [2] Remover cliente
 [3] Editar informações de cliente
@@ -68,6 +57,7 @@ def modulo_clientes(clientes):
                     print('CPF invalido !')
                     cpf_cliente = input('digite o cpf do cliente novamente:')
                 else:
+                    cpf_cliente = cpf_cliente.replace('.', '').replace('-', '')
                     print('CPF valido')
                     break
 
@@ -99,12 +89,10 @@ def modulo_clientes(clientes):
 #######################################
                   ''') 
 
-            print('Clientes:',clientes)
+            print('Clientes:', clientes)
 
-            
-        
         elif resposta_cliente == '2':
-            cpf_cliente = input('Digite o cpf do cliente:')
+            cpf_cliente = input('Digite o cpf do cliente:').replace('.', '').replace('-', '')
 
             if cpf_cliente in clientes:
                 print("##### Cliente encontrado:")
@@ -123,28 +111,43 @@ def modulo_clientes(clientes):
 ######################################
                         ''')
                     
-                    print('clientes',clientes)
+                    print('clientes', clientes)
 
                 else:
                     print('Remoção do cliente cancelada!!!')
             
             else:
                 print('Cliente não encontrado!!!')
-                    
-
-            
 
         elif resposta_cliente == '3':
-            cpf_cliente = input('Digite o cpf do cliente:')
+            cpf_cliente = input('Digite o cpf do cliente que deseja editar:').replace('.', '').replace('-', '')
+            
             if cpf_cliente in clientes:
                 print("##### Cliente encontrado:")
                 print("##### Nome     :", clientes[cpf_cliente][0])
                 print("##### Email    :", clientes[cpf_cliente][1])
                 print("##### Celular  :", clientes[cpf_cliente][2])
 
-                novo_nome_cliente = input('Digite o novo nome do cliente:')
+                novo_nome_cliente = input('Digite o novo nome do cliente:').lower()
+
+
                 novo_email_cliente = input('Digite o novo email do cliente:')
+                while True:
+                    if validar_email(novo_email_cliente) == False:
+                        print('Email invalido !')
+                        novo_email_cliente = input('Digite o novo email do cliente novamente:')
+                    else:
+                        print('Novo email valido!')
+                        break
+
                 novo_celular_cliente = input('Digite o novo celular do cliente:')
+                while True:
+                    if validar_celular(novo_celular_cliente) == False:
+                        print('Numero de celular invalido !')
+                        novo_celular_cliente = input('Digite o novo celular do cliente novamente:')
+                    else:
+                        print('Novo celular valido!')
+                        break
 
                 status_clientes = clientes[cpf_cliente][3]
 
@@ -156,14 +159,13 @@ def modulo_clientes(clientes):
 ####################################
                     ''')
 
-                print('Clientes',clientes)
+                print('Clientes', clientes)
             
             else:
                 print('Cliente não encontrado!!!')
-           
-        
+
         elif resposta_cliente == '4':
-            cpf_cliente = input('Digite o cpf do cliente que deseja realizar a pesquisa:')
+            cpf_cliente = input('Digite o cpf do cliente que deseja realizar a pesquisa:').replace('.', '').replace('-', '')
             if cpf_cliente in clientes:
                 print("##### Cliente encontrado:")
                 print("##### Nome     :", clientes[cpf_cliente][0])
@@ -193,29 +195,26 @@ def modulo_clientes(clientes):
                     print('#### CPF:', cpf)
                     print('#### Nome:', dados[0])
                     print('#### Email:', dados[1])
-                    print('#### Celular:',dados[2])
+                    print('#### Celular:', dados[2])
 
         elif resposta_cliente == '6':
-            cpf_cliente = input('Digite o CPF do cliente que você deseja reativar:')
+            cpf_cliente = input('Digite o CPF do cliente que você deseja reativar:').replace('.', '').replace('-', '')
 
             if cpf_cliente in clientes:
-
                 if clientes[cpf_cliente][3] == False:
-
                     clientes[cpf_cliente][3] = True
-
                     print('''
 ########################################
 ### Cliente reativado com sucesso!!!  ##
 ########################################
                     ''')
-
                 else:
                     print('Este cliente já estava ativo!')
             else:
                 print('Este cliente não foi cadastrado anteriormente!')
+        
+        elif resposta_cliente == '0':
+            print('Saindo do módulo de clientes...')
+            
         else:
             print('Nenhuma das opções!!!')
-        
-
-          
