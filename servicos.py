@@ -33,7 +33,6 @@ def modulo_servicos(servicos):
             codigo_servico = gerar_codigo(servicos)
             print('Codigo do serviço:', codigo_servico)
             
-            # CORREÇÃO: Adicionado os parênteses () no .lower()
             nome_servico = input('Digite o nome do serviço (ex: corte):').lower()
             valor_servico = input('Digite o valor do serviço(R$):')
             duracao_servico = input('Digite a duração estimada (ex: 30 min): ')
@@ -85,7 +84,6 @@ def modulo_servicos(servicos):
                 print("##### Valor    :", servicos[codigo_servico][1])
                 print("##### Duração  :", servicos[codigo_servico][2])
 
-                # CORREÇÃO: Adicionado .lower() para manter o padrão
                 novo_nome_servico = input('Digite o novo nome do serviço:').lower()
                 novo_valor_servico = input('Digite o novo valor do serviço (R$):')
                 nova_duracao_servico = input('Digite a nova duração do serviço:')
@@ -135,13 +133,12 @@ def modulo_servicos(servicos):
 ##########################
                   ''') 
             for cod, dados in servicos.items():
-                # CORREÇÃO: Removido os colchetes de [dados] e ajustado as variáveis internas
                 if dados[3] == True:
                     print('#### Cod. serviço:', cod)
                     print('#### Nome do serviço:', dados[0])
                     print('#### Valor do serviço:', dados[1])
                     print('#### Duração do serviço:', dados[2])
-                    print('-' * 30) # Linha separadora opcional para legibilidade
+                    print('-' * 30)
 
         elif resposta_servico == '6':
             codigo_servico = input('Digite o codigo do serviço que você deseja reativar:')

@@ -16,7 +16,6 @@ def modulo_relatorios(clientes, servicos, agendamentos):
 [5] Buscar serviço pelo nome
 [6] Agendamentos por período
 [7] Faturamento do período
-[8] Serviço mais procurado
 [0] Voltar
 #################################
         ''')
@@ -135,29 +134,10 @@ def modulo_relatorios(clientes, servicos, agendamentos):
             print(f'\n##### Faturamento de {data_inicial} até {data_final} #####')
             print('Faturamento total do período:', total, 'R$')
 
-        elif resposta_relatorios == '8':
-            print('\n##### SERVIÇO MAIS PROCURADO #####')
-            if not agendamentos:
-                print("Nenhum agendamento registrado ainda.")
-            else:
-                contagem_servicos = {}
-                for cod, dados in agendamentos.items():
-                    if dados[4] == True: 
-                        cod_servico = dados[1]
-                        contagem_servicos[cod_servico] = contagem_servicos.get(cod_servico, 0) + 1
-                
-                if contagem_servicos:
-                    cod_mais_procurado = max(contagem_servicos, key=contagem_servicos.get)
-                    qtd = contagem_servicos[cod_mais_procurado]
-                    
-                    nome_servico = servicos[cod_mais_procurado][0] if cod_mais_procurado in servicos else "Serviço excluído"
-                    print(f"O serviço mais procurado é: {nome_servico.lower()}")
-                    print(f"Total de agendamentos realizados: {qtd} vez(es)")
-                else:
-                    print("Nenhum agendamento ativo encontrado.")
-
         elif resposta_relatorios == '0':
             print('Voltando ao menu principal...')
             
         else:
             print('Nenhuma das opções!!! ')
+
+#sujestão alterar pra biblioteca de datetime, pra se mais poreciso no calculo
